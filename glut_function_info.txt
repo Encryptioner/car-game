@@ -1,0 +1,105 @@
+/*
+//draw.cpp
+
+glPushMatrix();// Set current matrix on the stack
+glTranslate produces a translation by x y z . values decides distance from lower left corner in horizontal line and vertical line
+glColor3f(1, 0, 0);// glColor3f() command establishes what color to use for drawing objects
+glBegin() and glEnd(), define the object to be drawn
+glVertex2f(0,0);// The polygon’s “corners” are defined by it in float value
+glPopMatrix();// Pop the old matrix without the transformations.
+glFlush() ensures that the drawing commands are actually executed
+
+glPointSize(5); // Sets the width in pixels for rendered points
+glBegin(GL_POINTS);// indicate he polygon should be drawn as points, Also can be GL_LINES, GL_LINE_STRIP, GL_LINE_LOOP, GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_QUADS, GL_QUAD_STRIP, and GL_POLYGON.
+glutStrokeCharacter(( void *font, int character );)// renders a single stroke character in the current window using the specified font.
+glScale produces a nonuniform scaling along the x, y, and z axes. Before that translation is needed. scale the size in width and height
+glwidth Specifies the width of rasterized lines. The initial value is 1.
+glutSwapBuffers swaps the buffers of the current window if double buffered.
+
+
+ If you draw single buffered, a buffer swap never occurs, and the end result is that nothing will ever be displayed on the screen.
+
+The fixed-function pipeline maintains multiple matrix stacks. Among them are the ModelView and the Projection stack. The difference between glMatrixMode(GL_MODELVIEW) and glMatrixMode(GL_PROJECTION) is simply that you're operating on either the ModelView or the Projection stack, depending on which of the above function calls was made. In general, it is NOT advisable to manipulate the projection matrix stack if you don't intend to really change the projection matrix. Most of the the time you'll want to modify the modelview stack. 
+
+Orthographic projection (sometimes orthogonal projection), is a means of representing three-dimensional objects in two dimensions.
+
+
+
+
+glClearColor() establishes what color the window will be cleared to
+glClear actually clears the window
+glMatrixMode Specifies which matrix stack is the target for subsequent matrix operations. Applies subsequent matrix operations to the modelview matrix stack.
+glLoadIdentity initialize the current projection matrix so that only the specified projection transformation has an effect
+............It clear the currently modifiable matrix for future transformation commands, as these commands modify the current matrix.
+glViewport describe the origin of the available screen space within the window
+gluOrtho2D sets up a two-dimensional orthographic viewing region.o
+
+
+//move.cpp
+glutPostRedisplay() // Mark the normal plane of current window as needing to be redisplayed. The next iteration through glutMainLoop, the window's display callback will be called to redisplay the window's normal plane.
+
+void glutTimerFunc(unsigned int msecs,
+                   void (*func)(int value), value);
+glutTimerFunc registers a timer callback to be triggered in a specified number of milliseconds.
+The value parameter to the timer callback will be the value of the value parameter to glutTimerFunc.
+The number of milliseconds is a lower bound on the time before the callback is generated.
+GLUT attempts to deliver the timer callback as soon as possible after the expiration of the callback's time interval.
+ignore a callback based on its value parameter when it is triggered.
+Say you start two or more times with the same callback function, how do you know which timer triggered the callback? You use an ID which is passed to the callback to identify which timer triggered it.
+
+
+
+//main.cpp
+
+glutInit will initialize the GLUT library and negotiate a session with the window system.
+A pointer to the program's unmodified argc variable from main. Upon return, the value pointed to by argcp will be updated, because glutInit extracts any command line options intended for the GLUT library.
+The program's unmodified argv variable from main. Like argcp, the data for argv will be updated because glutInit extracts any command line options understood by the GLUT library.
+
+glutInitDisplayMode sets the initial display mode.
+.....GLUT_RGBA : Bit mask to select an RGBA mode window. This is the default if neither GLUT_RGBA nor GLUT_INDEX are specified.
+.....GLUT_DEPTH : Bit mask to select a window with a depth buffer.
+.....GLUT_DOUBLE : Bit mask to select a double buffered window. This overrides GLUT_SINGLE if it is also specified.
+glutInitWindowPosition and   glutInitWindowSize set the initial window position and size respectively.
+glutCreateWindow creates a top-level window.
+glutFullScreen requests that the current window be made full screen.
+glutReshapeFunc sets the reshape callback for the current window.
+glutMainLoop enters the GLUT event processing loop. This routine should be called at most once in a GLUT program. Once called, this routine will never return. It will call as necessary any callbacks that have been registered.
+End of main routine, nothing is call again in main after glutmainloop is called.
+
+
+glutKeyboardFunc sets the keyboard callback for the current window. When a user types into the window, each key press generating an ASCII character will generate a keyboard callback. The key callback parameter is the generated ASCII character. The state of modifier keys such as Shift cannot be determined directly; their only effect will be on the returned ASCII data. The x and y callback parameters indicate the mouse location in window relative coordinates when the key was pressed. When a new window is created, no keyboard callback is initially registered, and ASCII key strokes in the window are ignored. Passing NULL to glutKeyboardFunc disables the generation of keyboard callbacks.
+
+During a keyboard callback, glutGetModifiers may be called to determine the state of modifier keys when the keystroke generating the callback occurred.
+
+Also, see glutSpecialFunc for a means to detect non-ASCII key strokes.
+
+void glutSpecialFunc(void (*func)(int key, int x, int y));
+glutSpecialFunc sets the special keyboard callback for the current window. The special keyboard callback is triggered when keyboard function or directional keys are pressed. The key callback parameter is a GLUT_KEY_* constant for the special key pressed. The x and y callback parameters indicate the mouse in window relative coordinates when the key was pressed. When a new window is created, no special callback is initially registered and special key strokes in the window are ignored. Passing NULL to glutSpecialFunc disables the generation of special callbacks.
+
+
+glutSpecialUpFunc sets the special keyboard up (key release) callback for the current window. The special keyboard up callback is triggered when keyboard function or directional keys are released. The key callback parameter is a GLUT_KEY_* constant for the special key pressed. The x and y callback parameters indicate the mouse in window relative coordinates when the key was pressed. When a new window is created, no special up callback is initially registered and special key releases in the window are ignored. Passing NULL to glutSpecialUpFunc disables the generation of special up callbacks.
+
+
+
+using extern : Declaring a variable in C is like saying Compiler “ hey buddy listen , i will be using this variable in my future code” ,
+that allows you to refer to an object created here or elsewhere.
+Declaration can occur multiple times
+
+
+general variable defining: while Defining a variable is like saying Compiler “ hey please Allocate me the memory now .
+Definition occurs in only one place.
+
+both declaration and defing a variable value can be changed. but using #define as macro value can't change. it is a constant.
+
+
+
+-> As an alternative to automatic variables, it is possible to define variables that are external to all functions,
+ that is, variables that can be accessed by name by any function.
+ ecause external variables are globally accessible
+
+
+*/
+
+
+
+
